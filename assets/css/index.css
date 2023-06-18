@@ -63,17 +63,7 @@ body{
 }
 
 @media (max-width:1040px){
-    #hero p{
-        color: white;
-    }
-    #content>h1{
-        color: white;
-    }
-    .light-button{
-        border: 3px solid white;
-        color: white;
-        background-color: rgba(0,0,0,0);
-    }
+
     #hero>img{
         display: none;
     }
