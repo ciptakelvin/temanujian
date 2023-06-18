@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <% let index=0; %>
+    <h1>Quiz</h1>
+    <h2 id="question">Question Here..</h2>
+    <img id="gambar" height="200" src="/dummy1/1.png" alt=""><br /><br />
+    <input id="A" type="radio" name="answer"><span>A</span>
+    <input id="B" type="radio" name="answer"><span>B</span>
+    <input id="C" type="radio" name="answer"><span>C</span>
+    <input id="D" type="radio" name="answer"><span>D</span>
+    <input id="E" type="radio" name="answer"><span>E</span>
+    <br/>
+    <input onclick="prev()" type="submit" value="Previous">
+    <input onclick="nex()" type="submit" value="Next">
+    <input id="dataJSON" type="hidden" value='<%= data %>'>
+    <input id="quizName" type="hidden" value='<%= quizName %>'>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        //Initial Setup
+        let index=0;
+        let data=$("#dataJSON").val();
+        let quizName=$("#quizName").val();
+        let quiz=JSON.parse(data);
+        updateUI();
+
+        function updateUI(){
+            $("#question").text(quiz[index]["Question Text"]);
+            $("#A").next().text(quiz[index]["Answer 1"]);
+            $("#B").next().text(quiz[index]["Answer 2"]);
+            $("#C").next().text(quiz[index]["Answer 3"]);
+            $("#D").next().text(quiz[index]["Answer 4"]);
+            $("#E").next().text(quiz[index]["Answer 5"]);
+            $("#gambar").attr("src","/"+quizName+"/"+(index+1)+".png");
+        }
+
+        function nex(){
+            if(index<quiz.length-1){
+                index+=1;
+                updateUI();
+            }
+        }
+        function prev(){
+            if(index>0){
+                index-=1;
+                updateUI();
+            }
+        }
+    </script>
+</body>
+</html>

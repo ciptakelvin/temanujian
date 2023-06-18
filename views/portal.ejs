@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal - Teman Ujian</title>
+    <link rel="stylesheet" href="/assets/css/portal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header">
+        <img src="/assets/img/logo.png" alt="">
+    </div>
+    <div id="search">
+        <input type="text" placeholder="Cari..">
+    </div>
+    <div id="card-list">
+        <% data.map(function(d){ %>
+            <div>
+                <h1><%= d.name.replace(".csv",""); %></h1>
+                <p><%= d.description %></p>
+                <a href="/quiz/<%= d.name.replace('.csv',''); %>">
+                    <div class="rounded">
+                        <img src="/assets/img/play.png" alt="mulai">
+                    </div>
+                </a>
+                
+            </div>
+        <% }); %>
+    </div>
+
+
+</body>
+</html>
